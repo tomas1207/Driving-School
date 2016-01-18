@@ -34,8 +34,7 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // login Ultilizador e admin
-
+            // login 
             DataTable dt = BusinessLogicLayer.BLL.Login.LoginSystem(textBox1.Text, textBox2.Text);
             if (dt.Rows.Count > 0)
             {
@@ -43,13 +42,13 @@ namespace WindowsFormsApplication1
                 {
                     Admin ad = new Admin();
                     ad.Show();
+                    this.Hide();
 
                 }
-                else { MessageBox.Show("Login certo"); }
+                else { MessageBox.Show("Login certo"); this.Hide(); }
             }
             else { MessageBox.Show("Login errado"); }
-        
-
+      
         }
 
         private void Login_Load(object sender, EventArgs e)

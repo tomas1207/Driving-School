@@ -10,28 +10,25 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Admin : Form
+    public partial class Lista_de_utilizadores : Form
     {
-        public Admin()
+        public Lista_de_utilizadores()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Admin admin = new Admin();
+            admin.Show();
 
-            //ir para a form de reisto de carros
-            Rcarro carros = new Rcarro();
-            carros.Show();
 
-                this.Hide();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Lista_de_utilizadores_Load(object sender, EventArgs e)
         {
-            Registo reg = new Registo();
-            reg.Show();
-
+            dataGridView1.DataSource = BusinessLogicLayer.BLL.Registo.Load();
         }
+
     }
 }

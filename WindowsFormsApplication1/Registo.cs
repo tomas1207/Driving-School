@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
 
             //registo de Utilizdor
             int ret = BusinessLogicLayer.BLL.Registo.insertRegisto(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, textBox7.Text , textBox8.Text, textBox9.Text);
-            dataGridView1.DataSource = BusinessLogicLayer.BLL.Registo.Load();
+            //dataGridView1.DataSource = BusinessLogicLayer.BLL.Registo.Load();
             Loogin fm1 = new Loogin();
 
             fm1.Show();
@@ -42,6 +42,13 @@ namespace WindowsFormsApplication1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Lista_de_utilizadores lt = new Lista_de_utilizadores();
+            lt.Show();
+
         }
     }
 }

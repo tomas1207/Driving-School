@@ -161,6 +161,7 @@ namespace DataAccessLayer
 
             if (_SqlConn.State == ConnectionState.Open)
             {
+                
                 _SqlCommand.ExecuteNonQuery();
             }
 

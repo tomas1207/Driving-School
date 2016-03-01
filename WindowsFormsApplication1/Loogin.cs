@@ -46,8 +46,8 @@ namespace WindowsFormsApplication1
 
                 }
                 else if (dt.Rows[0][7].ToString() == "Secretaria") { Secretaria sc = new Secretaria(); sc.Show(); this.Hide(); }
-            }
-            else { MessageBox.Show("Login errado", "ERRO!" ); }
+            }                                         
+            else { MessageBox.Show("Login errado", "ERRO!", MessageBoxButtons.OKCancel ); }
       
         }
 
@@ -57,6 +57,11 @@ namespace WindowsFormsApplication1
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Loogin_KeyDown(object sender, KeyEventArgs e)
         {
 
         }

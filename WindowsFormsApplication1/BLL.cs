@@ -27,7 +27,7 @@ namespace BusinessLogicLayer
                 new SqlParameter("@Modelo", modelo),
                 new SqlParameter("@Tipo", tipo),
                 new SqlParameter("@Utilizaçao", utilizaçao),
-              
+    
                 
         };
 
@@ -54,35 +54,16 @@ namespace BusinessLogicLayer
                 new SqlParameter("@Modelo", modelo),
                 new SqlParameter("@Tipo", tipo),
                 new SqlParameter("@Utilizaçao", utilizaçao),
+                new SqlParameter("@id", id)
             };
-                return dal.executarNonQuery("Update Carros set Marca = @Marca, matricula = @Matricula, modelo = @Modelo, tipo = @tipo, utilizaçao = @Utilizaçao", sqlParams);
+                return dal.executarNonQuery("Update Carros set Marca = @Marca, matricula = @Matricula, modelo = @Modelo, tipo = @tipo, utilizaçao = @Utilizaçao where id = @id", sqlParams);
             }
 
-            internal static void UpdateCarro(string p1, string p2, string p3, string p4, string p5)
-            {
-                throw new NotImplementedException();
-            }
+       
         }
             public class Login
             {
-                static public DataTable Load()
-                {
-                    DAL dal = new DAL();
-                    return dal.executarReader("select * from Login", null);
-                }
-                static public int insertLogin(string UserName, string Password)
-                {
-                    DAL dal = new DAL();
-                    SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@UserName", UserName),
-                new SqlParameter("@Password", Password),
-             
-           };
-
-                    return dal.executarNonQuery("INSERT into Login (UserName,Password) VALUES(@UserName,@Password)", sqlParams);
-
-
-                }
+                
                 static public DataTable LoginSystem(string Nome, string Pass)
                 {
                     DAL dal = new DAL();
@@ -126,16 +107,16 @@ namespace BusinessLogicLayer
                     return dal.executarNonQuery("INSERT into Registo (Nome,DN,Email,Morada,Contacto,Cartac,Categoria,tipo, pass) VALUES(@Nome,@DN,@Email,@Morada,@Contacto,@Cartac,@Categoria,@Tipo,@pass)", sqlParams);
                 
                 }
-                static public int deletregisto(string Nome)
+                static public int deletregisto(string id)
                 {
                     DAL dal = new DAL();
                     SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@Nome", Nome),
+                new SqlParameter("@id", id),
                 };
-                    return dal.executarNonQuery("Delete from Registo Where Nome = @Nome", sqlParams);
+                    return dal.executarNonQuery("Delete from Registo Where id = @id", sqlParams);
 
                 }
-                static public int UpdateRegisto(string Nome, string DN, string Morada, string Contacto, string Cartac, string Email, string Categoria, string tipo, string pass)
+                static public int UpdateRegisto(string Nome, string DN, string Morada, string Contacto, string Cartac, string Email, string Categoria, string tipo, string pass, string id)
                 {
                     DAL dal = new DAL();
                     SqlParameter[] sql = new SqlParameter[]{
@@ -149,8 +130,9 @@ namespace BusinessLogicLayer
                 new SqlParameter("@Categoria", Categoria),
                   new SqlParameter("@Tipo", tipo),
                   new SqlParameter("@pass", pass),
+                  new SqlParameter("@id", id)
             };
-                    return dal.executarNonQuery("Update Registo set DN =@DN , Email = @Email, Morada = @Morada , Contacto = @Contacto, Cartac = @Cartac , Categoria = @Categoria,tipo = @Tipo, pass = @pass where Nome = @Nome ", sql);
+                    return dal.executarNonQuery("Update Registo set DN = @DN , Email = @Email, Morada = @Morada , Contacto = @Contacto, Cartac = @Cartac , Categoria = @Categoria,tipo = @Tipo, pass = @pass, Nome = @Nome where id = @id ", sql);
 
                 }
 

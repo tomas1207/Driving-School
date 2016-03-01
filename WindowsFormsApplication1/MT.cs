@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
     public partial class MT : Form
     {
         string Nome, carro;
+        string uDn, uEmail, uMorada, uContacto, uCartac, uCategoria, uTipo, uPass, id;
+
 
         public MT()
         {
@@ -22,28 +24,16 @@ namespace WindowsFormsApplication1
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             carro = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[1].ToString();
-            textBox2.Text = dataGridView2.Rows[e.RowIndex].Cells[2].ToString();
-            textBox3.Text = dataGridView2.Rows[e.RowIndex].Cells[3].ToString();
-            textBox4.Text = dataGridView2.Rows[e.RowIndex].Cells[4].ToString();
-            textBox5.Text = dataGridView2.Rows[e.RowIndex].Cells[5].ToString();
+        
         }
 
         private void MT_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = BusinessLogicLayer.BLL.Carros.Load();
             dataGridView2.DataSource = BusinessLogicLayer.BLL.Registo.Load();
-            panel1.Hide();
-            panel2.Hide();
-
+   
 
         }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             BusinessLogicLayer.BLL.Carros.deletecarro(carro);
@@ -56,36 +46,39 @@ namespace WindowsFormsApplication1
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+      
+          Nome = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+         uDn = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+         uEmail = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+         uMorada = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+         uContacto = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+         uCartac =  dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
+         uCategoria = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+         uTipo =  dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+            uPass =  dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
+         id = dataGridView2.Rows[e.RowIndex].Cells[9].Value.ToString();
+
+        }
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
             Nome = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-          
+            uDn = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+            uEmail = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+            uMorada = dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString();
+            uContacto = dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString();
+            uCartac = dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString();
+            uCategoria = dataGridView2.Rows[e.RowIndex].Cells[6].Value.ToString();
+            uTipo = dataGridView2.Rows[e.RowIndex].Cells[7].Value.ToString();
+            uPass = dataGridView2.Rows[e.RowIndex].Cells[8].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel2.Show();
+           BusinessLogicLayer.BLL.Registo.UpdateRegisto(Nome, uDn, uEmail, uMorada, uContacto, uCartac, uCategoria, uTipo, uPass,id);
         }
 
-        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-        
-        }
-
-        private void updateDaBaseDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            BusinessLogicLayer.BLL.Carros.UpdateCarro(carro,textBox1.Text, textBox2.Text, textBox3.Text , textBox4.Text, textBox5.Text);
-            panel2.Hide();
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            panel2.Show();
-        }
 
     
     }
